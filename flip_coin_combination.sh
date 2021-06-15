@@ -145,3 +145,56 @@ do
     	triplet_combination[$key]=$percentage
     	echo "percentage of $key is ${triplet_combination[$key]}%"
 done
+
+echo ${triplet_combination[@]}
+
+
+# To extract keys and values
+
+singlet_combinations=${!singlet_combination[@]}
+singlet_percentage=${singlet_combination[@]}
+
+doublet_combinations=${!doublet_combination[@]}
+doublet_percentage=${doublet_combination[@]}
+
+triplet_combinations=${!triplet_combination[@]}
+triplet_percentage=${triplet_combination[@]}
+
+# To store all the combination and percentage to another array
+total_combination+=( ${singlet_combinations[@]} ${doublet_combinations[@]} ${triplet_combinations[@]} )
+total_percentage+=( ${singlet_percentage[@]} ${doublet_percentage[@]} ${triplet_percentage[@]} )
+
+
+
+
+echo "*********** Sorting the percentages of each combination********** "
+
+
+
+
+echo  "sorted singlet combination percentages:"
+ans1=$(printf "%s\n" "${singlet_percentage[@]}" | sort -n)
+echo $ans1
+
+echo  "sorted doublet combination percentages:"
+ans2=$(printf '%s\n' "$doublet_percentage" | sort -n)
+echo $ans2
+
+echo  "sorted triplet combination percentages:"
+ans3=$(printf "%s\n" "${triplet_percentage[@]}" | sort -n)
+echo $ans3
+
+
+echo "************************WINNERS***********************"
+
+echo "For Singlet Combination"
+echo $singlet_combinations $singlet_percentage
+
+echo "For Doublet Combination"
+echo $doublet_combinations $doublet_percentage
+
+echo "For Triplet Combination"
+echo $triplet_combinations $triplet_percentage
+
+echo "For All Combinations"
+echo $total_combinations $total_percentage
